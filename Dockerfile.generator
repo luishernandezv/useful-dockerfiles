@@ -1,7 +1,8 @@
 ### The purpose of this docker file is to show how to mount 
 ### a local folder and generate a file with tools installed
 ### in the container image
-### Usage: docker build -f Dockerfile.generator -t docker-gen:latest . && docker run -it -v $(pwd)/gen-folder:/data docker-gen:latest
+### Usage: docker build -f Dockerfile.generator -t docker-gen:latest . && docker run -it -v $(pwd)/gen-folder:/data docker-gen:
+### Result: folder gen-folder in local machine should have a file that says This is a test
 
 FROM alpine:latest
 
@@ -12,4 +13,4 @@ RUN apk update && apk add jq
 RUN jq --help
 
 # Write a testing file
-CMD ["/bin/sh", "-c", "echo '{\"a\": \"This is a test\"}' | jq --raw-output '.a' > /data/gen-file.txt"]
+CMD ["/bin/sh", "-c", "echo '{\"a\": \"This is a test\"}' | jq --raw-output     '.a' > /data/gen-file.txt"]
