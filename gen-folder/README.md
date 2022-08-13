@@ -1,0 +1,1 @@
+Folder used by Dockerfile.generator
